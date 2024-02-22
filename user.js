@@ -287,6 +287,11 @@ user_pref("security.ssl.require_safe_negotiation", true);
 // PREF: disable disk cache 
 user_pref("browser.cache.disk.enable", false);
 
+// PREF: disable Firefox View
+user_pref("browser.tabs.firefox-view", false);
+user_pref("browser.tabs.firefox-view-next", false);
+user_pref("browser.tabs.firefox-view-newIcon", false); // needed?
+user_pref("browser.firefox-view.feature-tour", "{\"screen\":\"\",\"complete\":true}");
 
 
 
