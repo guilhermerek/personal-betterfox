@@ -285,7 +285,7 @@ user_pref("security.ssl.require_safe_negotiation", true);
 
 
 // PREF: disable disk cache 
-user_pref("browser.cache.disk.enable", false);
+user_pref("browser.cache.disk.enable", true);
 
 // PREF: disable Firefox View
 user_pref("browser.tabs.firefox-view", false);
