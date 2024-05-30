@@ -10,7 +10,7 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 122                                                             *
+ * version: 126                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
 ****************************************************************************/
 
@@ -37,25 +37,23 @@ user_pref("media.cache_resume_threshold", 3600);
 user_pref("image.mem.decode_bytes_at_a_time", 32768);
 
 /** NETWORK ***/
-user_pref("network.buffer.cache.size", 262144);
-user_pref("network.buffer.cache.count", 128);
 user_pref("network.http.max-connections", 1800);
 user_pref("network.http.max-persistent-connections-per-server", 10);
 user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
 user_pref("network.http.pacing.requests.enabled", false);
 user_pref("network.dnsCacheExpiration", 3600);
-user_pref("network.dns.max_high_priority_threads", 8);
 user_pref("network.ssl_tokens_cache_capacity", 10240);
 
 /** SPECULATIVE LOADING ***/
 user_pref("network.dns.disablePrefetch", true);
+user_pref("network.dns.disablePrefetchFromHTTPS", true);
 user_pref("network.prefetch-next", false);
 user_pref("network.predictor.enabled", false);
+user_pref("network.predictor.enable-prefetch", false);
 
 /** EXPERIMENTAL ***/
 user_pref("layout.css.grid-template-masonry-value.enabled", true);
 user_pref("dom.enable_web_task_scheduling", true);
-user_pref("layout.css.has-selector.enabled", true);
 user_pref("dom.security.sanitizer.enabled", true);
 
 /****************************************************************************
@@ -151,7 +149,6 @@ user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
 user_pref("toolkit.telemetry.coverage.opt-out", true);
 user_pref("toolkit.coverage.opt-out", true);
 user_pref("toolkit.coverage.endpoint.base", "");
-user_pref("browser.ping-centre.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 
@@ -270,17 +267,6 @@ user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 // PREF: require safe SSL negotiation    MAY BREAK SITES
 // [ERROR] SSL_ERROR_UNSAFE_NEGOTIATION
 user_pref("security.ssl.require_safe_negotiation", true);
-
-
-// PREF: Firefox Translations [FF118+] 
-// Automated translation of web content is done locally in Firefox, so that 
-// the text being translated does not leave your machine. 
-// [ABOUT] Visit about:translations to translate your own text as well. 
-// [1] https://blog.mozilla.org/en/mozilla/local-translation-add-on-project-bergamot/ 
-// [2] https://blog.nightly.mozilla.org/2023/06/01/firefox-translations-and-other-innovations-these-weeks-in-firefox-issue-139/ 
-// [3] https://www.ghacks.net/2023/08/02/mozilla-firefox-117-beta-brings-an-automatic-language-translator-for-websites-and-it-works-offline/ 
-//user_pref("browser.translations.enable", true); // DEFAULT 
-//user_pref("browser.translations.autoTranslate", true); 
 
 
 
