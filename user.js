@@ -251,11 +251,6 @@ user_pref("permissions.default.desktop-notification", 0);
 // PREF: restore login manager
 user_pref("signon.rememberSignons", true);
 
-
-// PREF: restore Top Sites on New Tab page
-user_pref("browser.newtabpage.activity-stream.feeds.topsites", true); // Shortcuts
-user_pref("browser.newtabpage.activity-stream.default.sites", ""); // clear default topsites
-
 // PREF: remove sponsored content on New Tab page
 user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // Sponsored shortcuts 
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false); // Recommended by Pocket
@@ -306,7 +301,8 @@ user_pref("browser.tabs.firefox-view-newIcon", false); // needed?
 // PREF: disable the Firefox View tour from popping up
 user_pref("browser.firefox-view.feature-tour", "{\"screen\":\"\",\"complete\":true}");
 
-
+// PREF: allow websites to ask you to receive site notifications
+user_pref("permissions.default.desktop-notification", 0);
 
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
