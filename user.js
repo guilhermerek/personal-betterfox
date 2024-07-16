@@ -251,15 +251,6 @@ user_pref("permissions.default.desktop-notification", 0);
 // PREF: restore login manager
 user_pref("signon.rememberSignons", true);
 
-// PREF: remove sponsored content on New Tab page
-user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // Sponsored shortcuts 
-user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false); // Recommended by Pocket
-user_pref("browser.newtabpage.activity-stream.showSponsored", false); // Sponsored Stories
-
-// PREF: remove default Top Sites (Facebook, Twitter, etc.)
-// [NOTE] This does not block you from adding your own.
-user_pref("browser.newtabpage.activity-stream.default.sites", "");
-
 // PREF: enable GPU-accelerated Canvas2D [WINDOWS]
 user_pref("gfx.canvas.accelerated", true);
 
