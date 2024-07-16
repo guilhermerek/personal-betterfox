@@ -10,7 +10,7 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 122                                                             *
+ * version: 128                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
 ****************************************************************************/
 
@@ -37,25 +37,23 @@ user_pref("media.cache_resume_threshold", 3600);
 user_pref("image.mem.decode_bytes_at_a_time", 32768);
 
 /** NETWORK ***/
-user_pref("network.buffer.cache.size", 262144);
-user_pref("network.buffer.cache.count", 128);
 user_pref("network.http.max-connections", 1800);
 user_pref("network.http.max-persistent-connections-per-server", 10);
 user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
 user_pref("network.http.pacing.requests.enabled", false);
 user_pref("network.dnsCacheExpiration", 3600);
-user_pref("network.dns.max_high_priority_threads", 8);
 user_pref("network.ssl_tokens_cache_capacity", 10240);
 
 /** SPECULATIVE LOADING ***/
 user_pref("network.dns.disablePrefetch", true);
+user_pref("network.dns.disablePrefetchFromHTTPS", true);
 user_pref("network.prefetch-next", false);
 user_pref("network.predictor.enabled", false);
+user_pref("network.predictor.enable-prefetch", false);
 
 /** EXPERIMENTAL ***/
 user_pref("layout.css.grid-template-masonry-value.enabled", true);
 user_pref("dom.enable_web_task_scheduling", true);
-user_pref("layout.css.has-selector.enabled", true);
 user_pref("dom.security.sanitizer.enabled", true);
 
 /****************************************************************************
@@ -89,11 +87,14 @@ user_pref("browser.sessionstore.interval", 60000);
 user_pref("privacy.history.custom", true);
 
 /** SEARCH / URL BAR ***/
+user_pref("browser.urlbar.trimHttps", true);
 user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 user_pref("browser.search.suggest.enabled", false);
+user_pref("browser.urlbar.quicksuggest.enabled", false);
 user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
 user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+user_pref("browser.urlbar.groupLabels.enabled", false);
 user_pref("browser.formfill.enable", false);
 user_pref("security.insecure_connection_text.enabled", true);
 user_pref("security.insecure_connection_text.pbmode.enabled", true);
@@ -111,8 +112,6 @@ user_pref("editor.truncate_user_pastes", false);
 
 /** MIXED CONTENT + CROSS-SITE ***/
 user_pref("security.mixed_content.block_display_content", true);
-user_pref("security.mixed_content.upgrade_display_content", true);
-user_pref("security.mixed_content.upgrade_display_content.image", true);
 user_pref("pdfjs.enableScripting", false);
 user_pref("extensions.postDownloadThirdPartyPrompt", false);
 
@@ -132,7 +131,6 @@ user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 /** MOZILLA ***/
 user_pref("permissions.default.desktop-notification", 2);
 user_pref("permissions.default.geo", 2);
-user_pref("geo.provider.network.url", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
 user_pref("permissions.manager.defaultsUrl", "");
 user_pref("webchannel.allowObject.urlWhitelist", "");
 
@@ -151,7 +149,6 @@ user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
 user_pref("toolkit.telemetry.coverage.opt-out", true);
 user_pref("toolkit.coverage.opt-out", true);
 user_pref("toolkit.coverage.endpoint.base", "");
-user_pref("browser.ping-centre.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 
@@ -169,6 +166,7 @@ user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
 user_pref("captivedetect.canonicalURL", "");
 user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.connectivity-service.enabled", false);
+user_pref("dom.private-attribution.submission.enabled", false);
 
 /****************************************************************************
  * SECTION: PESKYFOX                                                        *
@@ -237,8 +235,35 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
 
+// PREF: always ask where to download
+// true = Direct download
+// false = The user is asked what to do
+user_pref("browser.download.useDownloadDir", false);
+
+// PREF: always ask how to handle new mimetypes
+// false = Save files
+// true = Ask whether to open or save files
+user_pref("browser.download.always_ask_before_handling_new_types", false);
+
+// PREF: allow websites to ask you to receive site notifications
+user_pref("permissions.default.desktop-notification", 0);
+
 // PREF: restore login manager
 user_pref("signon.rememberSignons", true);
+
+
+// PREF: restore Top Sites on New Tab page
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", true); // Shortcuts
+user_pref("browser.newtabpage.activity-stream.default.sites", ""); // clear default topsites
+
+// PREF: remove sponsored content on New Tab page
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // Sponsored shortcuts 
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false); // Recommended by Pocket
+user_pref("browser.newtabpage.activity-stream.showSponsored", false); // Sponsored Stories
+
+// PREF: remove default Top Sites (Facebook, Twitter, etc.)
+// [NOTE] This does not block you from adding your own.
+user_pref("browser.newtabpage.activity-stream.default.sites", "");
 
 // PREF: enable GPU-accelerated Canvas2D [WINDOWS]
 user_pref("gfx.canvas.accelerated", true);
@@ -264,7 +289,6 @@ user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 
 // PREF: enforce DNS-over-HTTPS (DoH)
 user_pref("network.trr.mode", 3);
-user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 
 
 // PREF: require safe SSL negotiation    MAY BREAK SITES
@@ -272,25 +296,14 @@ user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 user_pref("security.ssl.require_safe_negotiation", true);
 
 
-// PREF: Firefox Translations [FF118+] 
-// Automated translation of web content is done locally in Firefox, so that 
-// the text being translated does not leave your machine. 
-// [ABOUT] Visit about:translations to translate your own text as well. 
-// [1] https://blog.mozilla.org/en/mozilla/local-translation-add-on-project-bergamot/ 
-// [2] https://blog.nightly.mozilla.org/2023/06/01/firefox-translations-and-other-innovations-these-weeks-in-firefox-issue-139/ 
-// [3] https://www.ghacks.net/2023/08/02/mozilla-firefox-117-beta-brings-an-automatic-language-translator-for-websites-and-it-works-offline/ 
-//user_pref("browser.translations.enable", true); // DEFAULT 
-//user_pref("browser.translations.autoTranslate", true); 
-
-
-
-// PREF: disable disk cache 
+// PREF: enable disk cache 
 user_pref("browser.cache.disk.enable", true);
 
 // PREF: disable Firefox View
 user_pref("browser.tabs.firefox-view", false);
 user_pref("browser.tabs.firefox-view-next", false);
 user_pref("browser.tabs.firefox-view-newIcon", false); // needed?
+// PREF: disable the Firefox View tour from popping up
 user_pref("browser.firefox-view.feature-tour", "{\"screen\":\"\",\"complete\":true}");
 
 
