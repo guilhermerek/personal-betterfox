@@ -271,10 +271,12 @@ user_pref("dom.security.https_only_mode_error_page_user_suggestions", true);
 
 
 // PREF: set DoH provider - quad 9 dns 9.9.9.9
-user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
+//user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 
 // PREF: enforce DNS-over-HTTPS (DoH)
-user_pref("network.trr.mode", 3);
+//user_pref("network.trr.mode", 3);
+
+//DoH on quad9 was slowering my connection. Testing with out it.
 
 
 // PREF: require safe SSL negotiation    MAY BREAK SITES
