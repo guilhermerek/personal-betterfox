@@ -10,8 +10,9 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 140                                                             *
+ * version: 150 - linux edition                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
+ * url: https://github.com/guilhermerek/personal-betterfox                  *
  ****************************************************************************/
 
 /****************************************************************************
@@ -22,18 +23,10 @@ user_pref('content.notify.interval', 100000);
 
 /** GFX ***/
 user_pref('gfx.canvas.accelerated.cache-size', 512);
-user_pref('gfx.content.skia-font-cache-size', 20);
-
-/** DISK CACHE ***/
-user_pref('browser.cache.disk.enable', false);
+user_pref('gfx.content.skia-font-cache-size', 32);
 
 /** MEMORY CACHE ***/
 user_pref('browser.sessionhistory.max_total_viewers', 4);
-
-/** MEDIA CACHE ***/
-user_pref('media.memory_cache_max_size', 65536);
-user_pref('media.cache_readahead_limit', 7200);
-user_pref('media.cache_resume_threshold', 3600);
 
 /** IMAGE CACHE ***/
 user_pref('image.mem.decode_bytes_at_a_time', 32768);
@@ -47,30 +40,26 @@ user_pref('network.dnsCacheExpiration', 3600);
 user_pref('network.ssl_tokens_cache_capacity', 10240);
 
 /** SPECULATIVE LOADING ***/
-user_pref('network.http.speculative-parallel-limit', 0);
-user_pref('network.dns.disablePrefetch', true);
-user_pref('network.dns.disablePrefetchFromHTTPS', true);
-user_pref('browser.urlbar.speculativeConnect.enabled', false);
-user_pref('browser.places.speculativeConnect.enabled', false);
-user_pref('network.prefetch-next', false);
-user_pref('network.predictor.enabled', false);
-
-/** EXPERIMENTAL ***/
-user_pref('layout.css.grid-template-masonry-value.enabled', true);
+user_pref("network.http.speculative-parallel-limit", 0);
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.dns.disablePrefetchFromHTTPS", true);
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
+user_pref("browser.places.speculativeConnect.enabled", false);
+user_pref("network.prefetch-next", false);
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
  ****************************************************************************/
 /** TRACKING PROTECTION ***/
-user_pref('browser.contentblocking.category', 'strict');
-user_pref('browser.download.start_downloads_in_tmp_dir', true);
-user_pref('browser.helperApps.deleteTempFileOnExit', true);
-user_pref('browser.uitour.enabled', false);
-user_pref('privacy.globalprivacycontrol.enabled', true);
+user_pref("browser.contentblocking.category", "strict");
+user_pref("browser.download.start_downloads_in_tmp_dir", true);
+user_pref("browser.uitour.enabled", false);
+user_pref("privacy.globalprivacycontrol.enabled", true);
 
 /** OCSP & CERTS / HPKP ***/
-user_pref('security.OCSP.enabled', 0);
-user_pref('security.pki.crlite_mode', 2);
+user_pref("security.OCSP.enabled", 0);
+user_pref("privacy.antitracking.isolateContentScriptResources", true);
+user_pref("security.csp.reporting.enabled", false);
 
 /** SSL / TLS ***/
 user_pref('security.ssl.treat_unsafe_negotiation_as_broken', true);
@@ -78,12 +67,14 @@ user_pref('browser.xul.error_pages.expert_bad_cert', true);
 user_pref('security.tls.enable_0rtt_data', false);
 
 /** DISK AVOIDANCE ***/
-user_pref('browser.privatebrowsing.forceMediaMemoryCache', true);
-user_pref('browser.sessionstore.interval', 60000);
+user_pref("browser.cache.disk.enable", false);
+user_pref("browser.privatebrowsing.forceMediaMemoryCache", true);
+user_pref("media.memory_cache_max_size", 65536);
+user_pref("browser.sessionstore.interval", 60000);
 
 /** SHUTDOWN & SANITIZING ***/
-user_pref('browser.privatebrowsing.resetPBM.enabled', true);
-user_pref('privacy.history.custom', true);
+user_pref("privacy.history.custom", true);
+user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 
 /** SEARCH / URL BAR ***/
 user_pref('browser.urlbar.trimHttps', true);
@@ -95,15 +86,15 @@ user_pref('browser.urlbar.groupLabels.enabled', false);
 user_pref('browser.formfill.enable', false);
 user_pref('network.IDN_show_punycode', true);
 
+/** HTTPS-ONLY MODE ***/
+user_pref("dom.security.https_only_mode", true);
+user_pref("dom.security.https_only_mode_error_page_user_suggestions", true);
+
 /** PASSWORDS ***/
 user_pref('signon.formlessCapture.enabled', true);
-user_pref('signon.privateBrowsingCapture.enabled', false);
+user_pref('signon.privateBrowsingCapture.enabled', true);
 user_pref('network.auth.subresource-http-auth-allow', 1);
 user_pref('editor.truncate_user_pastes', false);
-
-/** MIXED CONTENT + CROSS-SITE ***/
-user_pref('security.mixed_content.block_display_content', true);
-user_pref('pdfjs.enableScripting', false);
 
 /** EXTENSIONS ***/
 user_pref('extensions.enabledScopes', 5);
@@ -111,11 +102,18 @@ user_pref('extensions.enabledScopes', 5);
 /** HEADERS / REFERERS ***/
 user_pref('network.http.referer.XOriginTrimmingPolicy', 2);
 
+/** MIXED CONTENT + CROSS-SITE ***/
+user_pref('security.mixed_content.block_display_content', true);
+user_pref('pdfjs.enableScripting', false);
+
 /** CONTAINERS ***/
-user_pref('privacy.userContext.ui.enabled', true);
+user_pref("privacy.userContext.ui.enabled", true);
+
+/** VARIOUS ***/
+user_pref("pdfjs.enableScripting", false);
 
 /** SAFE BROWSING ***/
-user_pref('browser.safebrowsing.downloads.remote.enabled', false);
+user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 
 /** MOZILLA ***/
 user_pref('permissions.default.desktop-notification', 0);
@@ -126,23 +124,23 @@ user_pref('permissions.manager.defaultsUrl', '');
 user_pref('extensions.getAddons.cache.enabled', false);
 
 /** TELEMETRY ***/
-user_pref('datareporting.policy.dataSubmissionEnabled', false);
-user_pref('datareporting.healthreport.uploadEnabled', false);
-user_pref('toolkit.telemetry.unified', false);
-user_pref('toolkit.telemetry.enabled', false);
-user_pref('toolkit.telemetry.server', 'data:,');
-user_pref('toolkit.telemetry.archive.enabled', false);
-user_pref('toolkit.telemetry.newProfilePing.enabled', false);
-user_pref('toolkit.telemetry.shutdownPingSender.enabled', false);
-user_pref('toolkit.telemetry.updatePing.enabled', false);
-user_pref('toolkit.telemetry.bhrPing.enabled', false);
-user_pref('toolkit.telemetry.firstShutdownPing.enabled', false);
-user_pref('toolkit.telemetry.coverage.opt-out', true);
-user_pref('toolkit.coverage.opt-out', true);
-user_pref('toolkit.coverage.endpoint.base', '');
-user_pref('browser.newtabpage.activity-stream.feeds.telemetry', false);
-user_pref('browser.newtabpage.activity-stream.telemetry', false);
-user_pref('datareporting.usage.uploadEnabled', false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.server", "data:,");
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.coverage.opt-out", true);
+user_pref("toolkit.coverage.opt-out", true);
+user_pref("toolkit.coverage.endpoint.base", "");
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("datareporting.usage.uploadEnabled", false);
 
 /** EXPERIMENTS ***/
 user_pref('app.shield.optoutstudies.enabled', false);
@@ -157,28 +155,29 @@ user_pref('browser.tabs.crashReporting.sendReport', false);
  * SECTION: PESKYFOX                                                        *
  ****************************************************************************/
 /** MOZILLA UI ***/
-user_pref('browser.privatebrowsing.vpnpromourl', '');
-user_pref('extensions.getAddons.showPane', false);
-user_pref('extensions.htmlaboutaddons.recommendations.enabled', false);
-user_pref('browser.discovery.enabled', false);
-user_pref('browser.shell.checkDefaultBrowser', false);
-user_pref(
-  'browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons',
-  false
-);
-user_pref(
-  'browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features',
-  false
-);
-user_pref('browser.preferences.moreFromMozilla', false);
-user_pref('browser.aboutConfig.showWarning', false);
-user_pref('browser.aboutwelcome.enabled', false);
-user_pref('browser.profiles.enabled', true);
+user_pref("extensions.getAddons.showPane", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("browser.discovery.enabled", false);
+user_pref("browser.shell.checkDefaultBrowser", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+user_pref("browser.preferences.moreFromMozilla", false);
+user_pref("browser.aboutConfig.showWarning", false);
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+user_pref("browser.aboutwelcome.enabled", false);
+user_pref("browser.profiles.enabled", true);
 
 /** THEME ADJUSTMENTS ***/
 user_pref('toolkit.legacyUserProfileCustomizations.stylesheets', true);
 user_pref('browser.compactmode.show', true);
-user_pref('browser.privateWindowSeparation.enabled', false); // WINDOWS
+
+/** AI ***/
+user_pref("browser.ai.control.default", "blocked");
+user_pref("browser.ml.enable", false);
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.chat.menu", false);
+user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.ml.linkPreview.enabled", false);
 
 /** FULLSCREEN NOTICE ***/
 user_pref('full-screen-api.transition-duration.enter', '0 0');
@@ -190,12 +189,11 @@ user_pref('browser.urlbar.unitConversion.enabled', true);
 user_pref('browser.urlbar.trending.featureGate', false);
 
 /** NEW TAB PAGE ***/
-user_pref('browser.newtabpage.activity-stream.showSponsoredTopSites', false);
-user_pref('browser.newtabpage.activity-stream.feeds.section.topstories', false);
-user_pref('browser.newtabpage.activity-stream.showSponsored', false);
-
-/** POCKET ***/
-user_pref('extensions.pocket.enabled', false);
+user_pref("browser.newtabpage.activity-stream.default.sites", "");
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false);
 
 /** DOWNLOADS ***/
 user_pref('browser.download.manager.addToRecentDocs', false);
@@ -216,34 +214,18 @@ user_pref('layout.word_select.eat_space_to_next_word', false);
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
 
-// PREF: always ask where to download
-// true = Direct download
-// false = The user is asked what to do
-user_pref('browser.download.useDownloadDir', false);
-
 // PREF: set DoH provider
-user_pref('network.trr.uri', 'https://family.cloudflare-dns.com/dns-query'); // Cloudflare antimware and 18+
+user_pref('network.trr.uri', 'https://dns.nextdns.io/xxxxx'); // Now using NextDNS
 
 // PREF: enforce DNS-over-HTTPS (DoH)
 user_pref('network.trr.mode', 3);
 
-// PREF: always ask how to handle new mimetypes
-// false = Save files
-// true = Ask whether to open or save files
-user_pref('browser.download.always_ask_before_handling_new_types', false);
-
 // PREF: restore login manager
-user_pref('signon.rememberSignons', true);
+//user_pref('signon.rememberSignons', true);
 
 // PREF: disable address and credit card manager
 user_pref('extensions.formautofill.addresses.enabled', false);
 user_pref('extensions.formautofill.creditCards.enabled', false);
-
-// PREF: enable HTTPS-Only Mode
-// Warn me before loading sites that don't support HTTPS
-// in both Normal and Private Browsing windows.
-user_pref('dom.security.https_only_mode', true);
-user_pref('dom.security.https_only_mode_error_page_user_suggestions', true);
 
 // PREF: require safe SSL negotiation    MAY BREAK SITES
 // [ERROR] SSL_ERROR_UNSAFE_NEGOTIATION
@@ -254,11 +236,6 @@ user_pref('security.ssl.require_safe_negotiation', true);
 // 1 = allow user MiTM (such as your antivirus) (default)
 // 2 = strict
 user_pref('security.cert_pinning.enforcement_level', 2);
-
-// PREF: improve font rendering by using DirectWrite everywhere like Chrome [WINDOWS]
-user_pref('gfx.font_rendering.cleartype_params.rendering_mode', 5);
-user_pref('gfx.font_rendering.cleartype_params.cleartype_level', 100);
-user_pref('gfx.font_rendering.directwrite.use_gdi_table_loading', false);
 
 // PREF: show weather on New Tab page
 user_pref('browser.newtabpage.activity-stream.showWeather', true);
@@ -284,6 +261,48 @@ user_pref('general.smoothScroll.msdPhysics.slowdownSpringConstant', 250);
 user_pref('general.smoothScroll.currentVelocityWeighting', '1');
 user_pref('general.smoothScroll.stopDecelerationWeighting', '1');
 user_pref('mousewheel.default.delta_multiplier_y', 300); // 250-400; adjust this number to your liking
+
+/****************************************************************************
+ * SECTION: GFX RENDERING TWEAKS                                            *
+****************************************************************************/
+
+// PREF: Webrender tweaks
+// [1] https://searchfox.org/mozilla-central/rev/6e6332bbd3dd6926acce3ce6d32664eab4f837e5/modules/libpref/init/StaticPrefList.yaml#6202-6219
+// [2] https://hacks.mozilla.org/2017/10/the-whole-web-at-maximum-fps-how-webrender-gets-rid-of-jank/
+// [3] https://www.reddit.com/r/firefox/comments/tbphok/is_setting_gfxwebrenderprecacheshaders_to_true/i0bxs2r/
+// [4] https://www.reddit.com/r/firefox/comments/z5auzi/comment/ixw65gb?context=3
+// [5] https://gist.github.com/RubenKelevra/fd66c2f856d703260ecdf0379c4f59db?permalink_comment_id=4532937#gistcomment-4532937
+user_pref("gfx.webrender.all", true); // enables WR + additional features
+
+
+// PREF: Webrender layer compositor
+// [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1945683
+// [2] https://www.reddit.com/r/firefox/comments/1p58qre/firefox_is_getting_ready_to_make_youtube_fast/
+// [3] https://www.ghacks.net/2025/11/24/these-two-tweaks-should-improve-firefoxs-performance-on-youtube-significantly/
+user_pref("gfx.webrender.layer-compositor", true);
+    // If your PC uses an AMD GPU, you might want to make a second change.
+    // This one improves CPU usage on AMD systems.
+user_pref("media.wmf.zero-copy-nv12-textures-force-enabled", true);
+
+// PREF: if your hardware doesn't support Webrender, you can fallback to Webrender's software renderer
+// [1] https://www.ghacks.net/2020/12/14/how-to-find-out-if-webrender-is-enabled-in-firefox-and-how-to-enable-it-if-it-is-not/
+//user_pref("gfx.webrender.software", true); // Software Webrender uses CPU instead of GPU
+    //user_pref("gfx.webrender.software.opengl", true); // LINUX
+
+// PREF: GPU-accelerated Canvas2D
+// Uses Accelerated Canvas2D for hardware acceleration of Canvas2D.
+// This provides a consistent acceleration architecture across all platforms
+// by utilizing WebGL instead of relying upon Direct2D.
+// [WARNING] May cause issues on some Windows machines using integrated GPUs [2] [3]
+// Add to your overrides if you have a dedicated GPU.
+// [NOTE] Higher values will use more memory.
+// [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1741501
+// [2] https://github.com/yokoffing/Betterfox/issues/153
+// [3] https://github.com/yokoffing/Betterfox/issues/198
+user_pref("gfx.canvas.accelerated", true); // [DEFAULT FF133+]
+    //user_pref("gfx.canvas.accelerated.cache-items", 4096); // [default=8192 FF135+]; Chrome=4096
+    //user_pref("gfx.canvas.max-size", 32767); // DEFAULT=32767
+
 
 /****************************************************************************
  * END: BETTERFOX                                                           *
